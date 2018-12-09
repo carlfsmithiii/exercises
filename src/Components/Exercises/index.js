@@ -7,23 +7,24 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-  IconButton
+  IconButton,
+  withStyles
 } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import Form from './Form';
 
-const styles = {
+const styles = theme => ({
   Paper: {
     padding: 20,
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 5,
     height: 500,
     overflowY: "auto"
   }
-};
+});
 
-export default ({
+export default withStyles(styles)(({
   category,
+  classes,
   editMode,
   exercises,
   muscles,
@@ -39,8 +40,8 @@ export default ({
   onSelectEdit
 }) => (
   <Grid container>
-    <Grid item sm>
-      <Paper style={styles.Paper}>
+    <Grid item xs={12} sm={6}>
+      <Paper className={classes.Paper}>
         {exercises.map(([group, exercises]) =>
           !category || category === group ? (
             <Fragment key={group}>
@@ -71,8 +72,8 @@ export default ({
         )}
       </Paper>
     </Grid>
-    <Grid item sm>
-      <Paper style={styles.Paper}>
+    <Grid item xs={12} sm={6}>
+      <Paper className={classes.Paper}>
         {editMode ? (
           <Form exercise={exercise} muscles={muscles} onSubmit={onEdit}/>
         ) : (
@@ -86,4 +87,4 @@ export default ({
       </Paper>
     </Grid>
   </Grid>
-);
+));
