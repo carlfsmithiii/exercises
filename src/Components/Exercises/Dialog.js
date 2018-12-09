@@ -32,13 +32,20 @@ export default class extends Component {
 
     return (
       <Fragment>
-        <Fab variant="round" onClick={this.handleToggle} size="small">
+        <Fab
+          variant="round"
+          onClick={this.handleToggle}
+          size="small"
+          color="secondary"
+        >
           <Add />
         </Fab>
         <Dialog
           open={open}
           onClose={this.handleToggle}
           aria-labelledby="form-dialog-title"
+          fullWidth
+          maxWidth="xs"
         >
           <DialogTitle id="form-dialog-title">
             Create a New Exercise
